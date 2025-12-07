@@ -7,8 +7,6 @@
 ## - Non-root user setup (tredy:tredy)
 ## - pnpm package manager
 ## - OpenSSL for crypto operations
-## - RSA-2048 keypair for IPC signing
-## - Common helper scripts
 ##
 ## Build: docker build -f docker/Dockerfile -t nodejs_service:local .
 

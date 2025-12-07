@@ -14,7 +14,6 @@ jobs:
     outputs:
       changed-dirs: ${{ steps.changes.outputs.dirs }}
     steps:
-    steps:
       - uses: actions/checkout@v4
         with:
           fetch-depth: 0  # Fetch full history
