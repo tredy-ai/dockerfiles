@@ -1,6 +1,6 @@
 ## Tredy Base Image
 ## Provides common foundation for server, frontend, and collector services
-## Usage: FROM ghcr.io/tofut/tredy-base:latest (or build locally)
+## Usage: FROM ghcr.io/tredy-ai/nodejs_service:latest (or build locally)
 ##
 ## This base image includes:
 ## - Alpine Linux + Node.js 24
@@ -10,8 +10,7 @@
 ## - RSA-2048 keypair for IPC signing
 ## - Common helper scripts
 ##
-## Build: docker build -f docker/Dockerfile.base -t tredy-base .
-## Push: docker tag tredy-base ghcr.io/tofut/tredy-base:latest && docker push ghcr.io/tofut/tredy-base:latest
+## Build: docker build -f docker/Dockerfile -t nodejs_service:local .
 
 #############################################
 # Build Arguments

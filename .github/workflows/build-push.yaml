@@ -14,14 +14,28 @@ jobs:
     outputs:
       changed-dirs: ${{ steps.changes.outputs.dirs }}
     steps:
+    steps:
       - uses: actions/checkout@v4
         with:
-          fetch-depth: 2
+          fetch-depth: 0  # Fetch full history
 
       - name: Detect changed Dockerfiles
         id: changes
         run: |
-          CHANGED=$(git diff --name-only HEAD^ HEAD | grep 'Dockerfile$' | xargs -n1 dirname | sort -u | jq -R -s -c 'split("\n")[:-1]')
+          # If this is the first commit, compare against empty tree
+          if git rev-parse HEAD^ >/dev/null 2>&1; then
+            BASE="HEAD^"
+          else
+            BASE=$(git hash-object -t tree /dev/null)
+          fi
+
+          CHANGED=$(git diff --name-only $BASE HEAD | grep 'Dockerfile$' | xargs -n1 dirname 2>/dev/null | sort -u | jq -R -s -c 'split("\n")[:-1]')
+
+          # Handle case where no Dockerfiles changed
+          if [ -z "$CHANGED" ] || [ "$CHANGED" == '[""]' ]; then
+            CHANGED="[]"
+          fi
+
           echo "dirs=${CHANGED}" >> $GITHUB_OUTPUT
 
   build-and-push:
@@ -58,7 +72,7 @@ jobs:
         with:
           context: ./${{ matrix.dir }}
           push: true
-          tags: ghcr.io/${{ github.repository }}/${{ matrix.dir }}:${{ steps.version.outputs.new }}
+          tags: ghcr.io/tredy-ai/${{ matrix.dir }}:${{ steps.version.outputs.new }}
 
       - name: Record result
         id: result
