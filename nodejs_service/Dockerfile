@@ -20,6 +20,8 @@ ARG USER_NAME="tredy"
 ARG GROUP_NAME="tredy"
 ARG PNPM_VERSION="11.0.9"
 
+## This is a comment so that we can deploy this
+
 #############################################
 # Base Image
 #############################################
