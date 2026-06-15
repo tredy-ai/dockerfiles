@@ -18,7 +18,7 @@ ARG ARG_UID=770
 ARG ARG_GID=770
 ARG USER_NAME="tredy"
 ARG GROUP_NAME="tredy"
-ARG PNPM_VERSION="11.0.9"
+ARG PNPM_VERSION="11.6.0"
 
 ## This is a comment so that we can deploy this
 
