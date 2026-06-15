@@ -51,6 +51,7 @@ RUN corepack enable && corepack prepare "pnpm@${PNPM_VERSION}" --activate
 
 #####
 # Create non-root user and group
+# ...
 # Best practice: Never run Node.js apps as root in production
 # -D: Creates a system user without a password
 # -u: User's UID (770 for compatibility with Railway/other platforms)
