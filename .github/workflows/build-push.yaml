@@ -100,8 +100,6 @@ jobs:
     runs-on: blacksmith-2vcpu-ubuntu-2604
     steps:
       - uses: useblacksmith/checkout@v1
-        with:
-          token: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Download all results
         uses: actions/download-artifact@v8
