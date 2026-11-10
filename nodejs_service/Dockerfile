@@ -1,6 +1,7 @@
 ## Tredy Base Image
 ## Provides common foundation for standard NodeJS services across Tredy AI.
-## Usage: FROM ghcr.io/tredy-ai/nodejs_service:latest (or build locally)
+## Usage: FROM ghcr.io/tredy-ai/nodejs_service:<X.Y.Z> (or build locally)
+##        No :latest tag is published; pin a release version.
 ##
 ## This base image includes:
 ## - Alpine Linux + Node.js 24
