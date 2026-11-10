@@ -1,0 +1,11 @@
+{
+  "$schema": "https://raw.githubusercontent.com/googleapis/release-please/main/schemas/config.json",
+  "release-type": "simple",
+  "tag-separator": "/",
+  "include-v-in-tag": true,
+  "include-component-in-tag": true,
+  "bootstrap-sha": "7ee83ef9ed48235165dd1175e5c5f9c0c652e88d",
+  "packages": {
+    "nodejs_service": { "component": "nodejs_service" }
+  }
+}
