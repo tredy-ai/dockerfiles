@@ -2,5 +2,12 @@
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
   "extends": [
     "github>tredy-ai/renovate"
+  ],
+  "packageRules": [
+    {
+      "description": "Image updates must be fix(deps) so release-please cuts a new image version; config:recommended makes them chore.",
+      "matchFileNames": ["**/Dockerfile"],
+      "semanticCommitType": "fix"
+    }
   ]
 }
