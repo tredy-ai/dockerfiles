@@ -4,7 +4,7 @@
 ##        No :latest tag is published; pin a release version.
 ##
 ## This base image includes:
-## - Alpine Linux + Node.js 24
+## - Alpine Linux + Node.js 26 (Lithium LTS)
 ## - Non-root user setup (tredy:tredy)
 ## - pnpm package manager
 ## - OpenSSL for crypto operations
@@ -24,7 +24,7 @@ ARG PNPM_VERSION="12.18.0"
 #############################################
 # Base Image
 #############################################
-FROM node:24-alpine
+FROM node:lithium-alpine
 
 ## Propagate build arguments
 ARG BASEDIR
@@ -89,7 +89,7 @@ USER ${USER_NAME}
 # Metadata
 #############################################
 LABEL maintainer="Tredy AI <support@tredy.ai>"
-LABEL description="Base image for Tredy services"
+LABEL description="Base image for Tredy's NodeJS services"
 LABEL org.opencontainers.image.source="https://github.com/tredy-ai/dockerfiles"
 LABEL org.opencontainers.image.licenses="MIT"
 
