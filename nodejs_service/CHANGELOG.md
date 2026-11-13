@@ -1,5 +1,12 @@
 # Changelog
 
+## [2.1.0](https://github.com/tredy-ai/dockerfiles/compare/nodejs_service/v2.0.0...nodejs_service/v2.1.0) (2026-11-13)
+
+
+### Features
+
+* set pnpm version in image ([#112](https://github.com/tredy-ai/dockerfiles/issues/112)) ([3c734aa](https://github.com/tredy-ai/dockerfiles/commit/3c734aa8b94bddcb69f63283f1aac36d3e6e54c4))
+
 ## [2.0.0](https://github.com/tredy-ai/dockerfiles/compare/nodejs_service/v1.1.0...nodejs_service/v2.0.0) (2026-11-13)
 
 
