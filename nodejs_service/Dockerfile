@@ -19,12 +19,15 @@ ARG ARG_UID=770
 ARG ARG_GID=770
 ARG USER_NAME="tredy"
 ARG GROUP_NAME="tredy"
-ARG PNPM_VERSION="12.18.0"
 
 #############################################
 # Base Image
 #############################################
 FROM node:lithium-alpine
+
+## Fetch PNPM
+COPY --from=ghcr.io/pnpm/pnpm:12.18.0-alpine /opt/pnpm /opt/pnpm
+RUN for bin in pnpm pn pnpx pnx; do ln -s "/opt/pnpm/$bin" "/usr/local/bin/$bin"; done
 
 ## Propagate build arguments
 ARG BASEDIR
@@ -32,21 +35,12 @@ ARG ARG_UID
 ARG ARG_GID
 ARG USER_NAME
 ARG GROUP_NAME
-ARG PNPM_VERSION
 
 #####
 # Install runtime dependencies only (no build tools!)
 # OpenSSL is needed for RSA key generation and crypto operations
 #####
 RUN apk add --no-cache openssl curl
-
-#####
-# Install pnpm via corepack
-# Corepack is built into Node.js 16+ and manages package manager versions
-#####
-ENV PNPM_HOME="/usr/local/share"
-ENV PATH="$PNPM_HOME:$PATH"
-RUN corepack enable && corepack prepare "pnpm@${PNPM_VERSION}" --activate
 
 #####
 # Create non-root user and group
